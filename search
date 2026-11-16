@@ -1,0 +1,47 @@
+#!/bin/bash
+while true;
+ do
+echo "█████  ████ █████  ███  ████   ███  █   █ "
+echo "█     █     █     █   █ █   █ █     █   █ "
+echo "████   ███  ████  █████ ████  █     █████ "
+echo "█         █ █     █   █ █  █  █     █   █ "
+echo "█     ████  █████ █   █ █   █  ███  █   █ "
+echo " "
+echo "============================================================================="
+    echo "Введите, что хотите сделать"
+    echo "Help"
+    echo "Search"
+    read choice
+    if [[ "$choice" == "Help" ]];
+    then
+    echo "Тут могла быть ваша реклама"
+    fi
+    if  [[ "$choice" == "Search" ]];
+    then
+        echo "============================================================================"
+        echo "Введите, поиск чего вы хотите сделать"
+        echo "file - название"
+        echo "ext - расширение"
+        echo "time -  время изменения"
+        read file
+        if [[ "$file" == "file" ]];
+        then
+        echo "Введите имя"
+        read name
+        find / -type f -iname "$name" 2>/dev/null
+        echo "============================================================================"
+        fi
+        if [[ "$file" == "ext" ]];
+        then
+        echo "Введи расширение"
+        read ext
+        find / -type f -iname "*.$ext" 2>/dev/null
+        fi
+        if [[ "$file" == "time" ]];
+        then
+        echo "Введите время (в днях)"
+        read time
+        find / -type f -mtime -$time 2>/dev/null
+        fi
+    fi
+done
